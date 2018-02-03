@@ -8,5 +8,67 @@
  * maintain this system and implement operations such as enqueue, dequeueAny, dequeueDog and dequeueCat. You may use the built-in
  * LinkedList data structure
  */
+
+import java.util.*;
+
+public class Animal {
+	private String animalType;
+	private int counter;
+	
+	public String getAnimalType() {
+		return animalType;
+	}
+	
+	public int getCounter() {
+		return counter;
+	}
+	
+	public Animal(String Species, int count) {
+		animalType = Species;
+		counter = count;
+	}
+}
 public class Problem001DogCatQueue {
+	private rollingCounter = 0;
+	private LinkedList<Animal> dogList = new LinkedList<Animal>();
+	private LinkedList<Animal> catList = new LinkedList<Animal>();
+	
+	public Animal dequeueDog() {
+		Animal dog = dogList.getFirst();
+		dogList.removeFirst();
+		return dog;
+		
+	}
+	
+	public Animal dequeueCat() {
+		Animal cat = catList.getFirst();
+		catList.removeFirst();
+		return cat;
+	}
+	
+	public Animal dequeueAny() {
+		Animal dog = dogList.getFirst();
+		Animal cat = catList.getFirst();
+		
+		if(dog.getCounter() < cat.getCounter()) {
+			dogList.removeFirst();
+			return dog;
+		}
+		else {
+			catList.removeFirst();
+			return cat;
+		}
+	}
+	
+	public void enqueue(String animalType) {
+		rollingCounter++;
+		if (animalType = "dog") {
+			Animal dog = new Animal(animalType, rollingCounter);
+			dogList.add(dog);
+		}
+		else {
+			Animal cat = new Animal(animalType, rollingCounter);
+			catList.add(cat);
+		}		
+	}		
 }
