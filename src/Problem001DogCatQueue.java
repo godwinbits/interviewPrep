@@ -11,25 +11,9 @@
 
 import java.util.*;
 
-public class Animal {
-	private String animalType;
-	private int counter;
-	
-	public String getAnimalType() {
-		return animalType;
-	}
-	
-	public int getCounter() {
-		return counter;
-	}
-	
-	public Animal(String Species, int count) {
-		animalType = Species;
-		counter = count;
-	}
-}
+
 public class Problem001DogCatQueue {
-	private rollingCounter = 0;
+	private int rollingCounter = 0;
 	private LinkedList<Animal> dogList = new LinkedList<Animal>();
 	private LinkedList<Animal> catList = new LinkedList<Animal>();
 	
@@ -62,7 +46,7 @@ public class Problem001DogCatQueue {
 	
 	public void enqueue(String animalType) {
 		rollingCounter++;
-		if (animalType = "dog") {
+		if (animalType.equals("dog")) {
 			Animal dog = new Animal(animalType, rollingCounter);
 			dogList.add(dog);
 		}
@@ -70,5 +54,23 @@ public class Problem001DogCatQueue {
 			Animal cat = new Animal(animalType, rollingCounter);
 			catList.add(cat);
 		}		
-	}		
+	}
+
+	public class Animal {
+		private String animalType;
+		private int counter;
+
+		public String getAnimalType() {
+			return animalType;
+		}
+
+		public int getCounter() {
+			return counter;
+		}
+
+		public Animal(String Species, int count) {
+			animalType = Species;
+			counter = count;
+		}
+	}
 }
