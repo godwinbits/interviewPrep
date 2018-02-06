@@ -2,8 +2,6 @@ package Ch_04_Trees_and_Graphs.Q4_02_Minimal_Tree;
 
 		import CtCILibrary.TreeNode;
 
-		import java.util.Optional;
-
 public class Question {
 	public static void main(String[] args) {
 		int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
