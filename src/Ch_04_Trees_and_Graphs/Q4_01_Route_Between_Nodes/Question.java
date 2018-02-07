@@ -1,4 +1,5 @@
 package Q4_01_Route_Between_Nodes;
+import java.util.*;
 
 public class Question {
 	public enum State {
@@ -9,7 +10,7 @@ public class Question {
 	{
 		Q4_01_Route_Between_Nodes.Graph g = createNewGraph();
 		Node[] n = g.getNodes();
-		Node start = n[3];
+		Node start = n[0];
 		Node end = n[4];
 		System.out.println(search(g, start, end));
 	}
@@ -36,9 +37,47 @@ public class Question {
 		}
 		return g;
 	}
+	
+	public static void BFS(Graph g,Node source) {
+		Queue<Node> visitNodes = new LinkedList<Node>();
+		Node[] vertices = g.getNodes();
+		for(int i=0; i<vertices.length;i++) {
+			vertices[i].state = State.Unvisited;
+		}
+		source.state = State.Visited;
+		visitNodes.offer(source);
+		while(!visitNodes.isEmpty()) {
+			Node current = visitNodes.poll();
+			Node[] neighbours = current.getAdjacent();
+			for(int i=0;i<neighbours.length;i++) {
+				if(neighbours[i].state == State.Unvisited) {
+					neighbours[i].state = State.Visited;
+					visitNodes.offer(neighbours[i]);
+				}
+			}
+		}	
+	}
+	
+	public static void DFS(Graph g, Node source) {
+		source.state = State.Visited;
+		Node[] neighbours = source.getAdjacent();
+		for(int i=0;i<neighbours.length;i++) {
+			if(neighbours[i].state == State.Unvisited) {
+				DFS(g,neighbours[i]);
+			}
+		}
+	}
 
     public static boolean search(Graph g,Node start,Node end)  {
 		//TODO: to be implemented
+
+	BFS(g,start);
+    	
+	//BFS(g,start);
+	if(end.state == State.Visited)
+		return true;
+	else
 		return false;
+
     }
 }

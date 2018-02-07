@@ -1,4 +1,4 @@
-package Ch_04_Trees_and_Graphs.Q4_01_Route_Between_Nodes;
+package Q4_01_Route_Between_Nodes;
 
 import Q4_01_Route_Between_Nodes.Question;
 
