@@ -1,7 +1,7 @@
-package Ch_04_Trees_and_Graphs.Q4_03_List_of_Depths;
+package Q4_03_List_of_Depths;
 
-import CtCILibrary.AssortedMethods;
-import CtCILibrary.TreeNode;
+import CtCILibrary.CtCILibrary.AssortedMethods;
+import CtCILibrary.CtCILibrary.TreeNode;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -10,8 +10,34 @@ import java.util.LinkedList;
 public class QuestionBFS {
 
 	public static ArrayList<LinkedList<TreeNode>> createLevelLinkedList(TreeNode root) {
+		LinkedList<TreeNode> inProcess = new LinkedList<TreeNode>();
+		ArrayList<LinkedList<TreeNode>> output = new ArrayList<LinkedList<TreeNode>>();
+		
+		if(root == null)
+			return output;
+		else {
+			inProcess.add(root);
+			LinkedList<TreeNode> parent = new LinkedList<TreeNode>();
+			output.add(inProcess);
+			while(inProcess.size() > 0) {
+				parent = inProcess;
+				inProcess = new LinkedList<TreeNode>();
+				for(TreeNode element:parent) {
+					if(element.left != null)
+						inProcess.add(element.left);
+					if(element.right != null)
+						inProcess.add(element.right);
+				}
+				if(inProcess.size() > 0)
+					output.add(inProcess);
+			}
+			
+			return output;
+		}
+		
+		
 		//TODO: Implement
-		return null;
+		
 
 	}
 	
