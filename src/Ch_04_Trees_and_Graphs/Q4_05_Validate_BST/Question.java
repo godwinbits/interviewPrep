@@ -1,6 +1,6 @@
-package Ch_04_Trees_and_Graphs.Q4_05_Validate_BST;
+package Q4_05_Validate_BST;
 
-import CtCILibrary.TreeNode;
+import CtCILibrary.CtCILibrary.TreeNode;
 
 /**
  * Implement a  function to check if a binary tree is a binary search tree.
@@ -9,8 +9,26 @@ public class Question {
 	public static Integer last_printed = null;
 
 	public static boolean  checkBST(TreeNode node) {
+		if(node == null)
+			return true;
+		if((node.left == null) && (node.right) == null ) {
+			return true;
+		}
+		
+		if(node.left != null) {
+			if(node.left.data > node.data )
+				return false;
+		}
+		if(node.right != null) {
+			if(node.right.data <= node.data)
+				return false;
+		}
+		
+		return (checkBST(node.left) && checkBST(node.right));
+		
+		
 		//TODO: Implement
-		return false;
+		
 	}
 	public static void main(String[] args) {
 		int[] array = {Integer.MIN_VALUE, Integer.MAX_VALUE - 2, Integer.MAX_VALUE - 1, Integer.MAX_VALUE};
